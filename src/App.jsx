@@ -1,239 +1,76 @@
-import { useEffect, useState } from "react";
+import { memo, useCallback, useEffect, useMemo, useState } from "react";
 import "./App.css";
-import Emi from "./components/EmiCalculater/Emi";
-import MenuScrollNavigationBar from "./components/MenuScrollNavigation/MenuScrollNavigationBar";
-import MultiSearchinput from "./components/MultipleSearchInputfeild/MultiSearchinput";
-import MultiImageUpload from "./components/MultipleimagesUpload/MultiImageUpload";
-import MyCurrencyConvert from "./components/MyCurrencyConvert";
-import QuizApp from "./components/QuizApp/QuizApp";
-import TabBar from "./components/TabButton/TabBar";
-import Throttle from "./components/ThrottleReactjs/Throttle";
-import CurrencyConvertor from "./components/currency-convertor";
-import LikeButton from "./components/likebuttontask/LikeButton";
-import Pagination from "./components/pagination/Pagination";
-import ProgressBar from "./components/progressbar/ProgressBar";
-import TagsInputField from "./components/tagsinputComponets/TagsInputField";
-import TextCopyClipBoard from "./components/CopyTextToreactjs/TextCopyClipBoard";
-import Notes from "./components/Draganddropnotes/Notes";
-import MainInfiniteScroll from "./components/InfiniteScrollTask/MainInfiniteScroll";
-import CountDownTimer from "./components/countdowntimer/CountDownTimer";
-import StopWatch from "./components/stopwatch/StopWatch";
-import Autocomplete from "./components/Autocompletetypeboard/Autocomplete";
-import StarRating from "./components/startratingecom/StarRating";
-import Memorygame from "./components/memorygame/Memorygame";
-import MultifilterCategory from "./components/categorymultifiter/MultifilterCategory";
-import EsaywayinfinteScroll from "./components/InfiniteScrollTask/EsaywayinfinteScroll";
-import CouterWithundoRedo from "./components/couterwithundoredo/CouterWithundoRedo";
-import Carosule from "./components/carousal/Carosule";
-import TodoDragDrop from "./components/todoDraganddrop/TodoDragDrop";
-import SelectebleGrid from "./components/selecteblegrid/SelectebleGrid";
-import ModalwithCarosual from "./components/modalwithcarosual/ModalwithCarosual";
-import OtpInput from "./components/otpinputFeild/OtpInput";
-import GenrateRandomColor from "./components/genraterandomcolor/GenrateRandomColor";
-import Practice from "./components/jspractice/Practice";
-import FuturePediaWeb from "./components/futurepediaWeb/FuturePediaWeb";
-import CardSlider from "./components/MenuScrollNavigation/CardSlider";
-import NestedComent from "./components/nestedComments/NestedComent";
-import Optimation from "./components/memozation/Optimation";
-import MainCricle from "./components/rendomcircleprogram/MainCricle";
-const games = ["cricket","footbal","hockey"]
+
+
+
+import ToolkitPagination from "./components/paginationwithtoolkit/ToolkitPagination";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+
+import toast, { Toaster } from 'react-hot-toast';
+
 function App() {
+const [count ,setCount] =useState(0)
+const [toggle ,setToggle] = useState(false)
 
-  const checkValue =(c)=>{
-console.log(c)
-  }
+const increment =()=>{
+  // console.log("count")
+  setCount((pre)=>pre+1)
+}
+const data = (val)=>{
+  console.log("val")
+  return val
+}
+const data1 = useCallback(()=>{
 
+  return data(count)
+},[count])
 
-
-
-  const [theme, setTheme] = useState(() => {
-    // Check local storage for theme preference
-    const storedTheme = localStorage.getItem('theme');
-    return storedTheme ? storedTheme : 'light';
-  });
-
-  useEffect(() => {
-    // Update the HTML element with the theme class
-    document.documentElement.className = theme;
-    // Save theme preference to local storage
-    localStorage.setItem('theme', theme);
-  }, [theme]);
-
-  const toggleTheme = () => {
-    setTheme((prevTheme) => (prevTheme === 'light' ? 'dark' : 'light'));
-  };
-
-
-
-//  const A = [1,2,3,4,4,4,2,1,1,1,5,5,6,1] 
-
-//   const mostFeq = (a)=>{
-//     let b = {};
-//     a.map((val)=>{
-//       return b[val] ? ++b[val] : b[val] = 1
-//     });
-//    return Object.keys(b).reduce((acc,num)=>{
-//    return b[acc] > b[num] ? acc : num
-//    },0)
-//   };
-  
-//  console.log(mostFeq(A))
-
-
-
+const ChildCom =memo(({setToggle,toggle})=>{
+console.log("re rendard")
+  return(
+    <>
+<div className="flex justify-center items-center cursor-pointer my-6" onClick={()=>setToggle(!toggle)}><button>Click {toggle?"true":"false"}</button></div>
+    </>
+  )
+})
 
   return (
   
     <>
-    {/* currency converter */}
-
-   {/* <div className="min-h-screen bg-gray-100 flex flex-col items-center justify-center">
-       <div className="container">
-         <CurrencyConvertor />
-         <MyCurrencyConvert/>
-       </div>
-  
-
-   
-
-     </div> */}
-
-{/* menu scrollbar */}
-  {/* <div>
-  <MenuScrollNavigationBar/>
-  </div> */}
-
-
-  {/* infinitescrolling */}
-  {/* <MainInfiniteScroll/> */}
-  {/* <EsaywayinfinteScroll/> */}
-
-  
-{/* tab bar */}
-
-
-  {/* <div>
-    <TabBar/>
-  </div> */}
-
-     {/* progressbar  */}
-       {/* <ProgressBar/> */}
-
-       {/* like button */}
-       {/* <LikeButton/> */}
-
-
-
-    {/* <div className="flex justify-center">
-  {
-    games.map((val,index)=>{
-return(
-  <>
-  <div key={index}>
-    <input 
-    type="radio"
-     className="w-5 h-4 mx-2" 
-    id="huey" 
-    name="drone" 
-     value={val} 
-     onClick={()=>checkValue(val)}
-
-     />
-    <label htmlFor={val}>{val}</label>
-  </div>
-  </>
-)
-    })
-  }
-    </div> */}
 
  
-      {/*EMI Calculater  */}
+  {/* <Card/> */}
+  {/* <MainFile/> */}
+{/* <Pagination/> */}
 
-      {/* <Emi/> */}
+{/* <h1 className="text-xl py-12 text-center text-red-500">Hello Satish</h1>
 
+<h1 className="text-xl py-4 text-center text-red-500">{data1}</h1>
+<div className="flex justify-center items-center cursor-pointer" onClick={increment}><button>Click Count</button></div>
 
-      {/* quiz App */}
-      {/* <QuizApp/> */}
-
-{/* pagination  simple*/}
-      {/* <Pagination/> */}
-
-      {/* tags input componets */}
-      {/* <TagsInputField/> */}
-
-      {/* multiple images */}
-
-      {/* <MultiImageUpload/> */}
+<div className="flex justify-center items-center cursor-pointer" onClick={()=>setToggle(!toggle)}><button>Click {toggle?"true":"false"}</button></div> */}
 
 
-{/* multipleSearch */}
-{/* <MultiSearchinput/>  */}
+{/* useCallback */}
+<h1 className="text-xl py-12 text-center text-red-500">Hello Satish</h1>
+
+<h1 className="text-xl py-4 text-center text-red-500">{data1()}</h1>
+<div className="flex justify-center items-center cursor-pointer" onClick={increment}><button>Click Count</button></div>
+
+<ChildCom toggle={toggle} setToggle={setToggle}/>
+
+{/* <BrowserRouter>
+  <Routes>
+    <Route path="/" element={<ToolkitPagination/>}/>
 
 
-{/* <Throttle/> */}
 
-{/* text copy clipboard */}
-{/* <TextCopyClipBoard/> */}
-
-{/* Drag and drop notes */}
-{/* <Notes/> */}
-
-{/* countdowntimer  */}
-
-<CountDownTimer/>
-
-{/* stop watch */}
-{/* <StopWatch/> */}
-
-{/* autocomplete */}
-{/* <Autocomplete /> */}
-
-{/* startrting */}
-
-{/* <StarRating/> */}
-
-{/* memory game  */}
-
-{/* <Memorygame/> */}
-
-{/* multifilter */}
-{/* <MultifilterCategory/> */}
+  </Routes>
+  <Toaster />
+</BrowserRouter> */}
 
 
-{/* couter with undo redo */}
 
-{/* <CouterWithundoRedo/> */}
-{/* <Carosule/> */}
-{/* todolistdragDrop */}
-{/* <TodoDragDrop/> */}
-
-{/* selecteble grid */}
-{/* <SelectebleGrid/> */}
-
-{/* modal with carosual */}
-{/* <ModalwithCarosual/> */}
-
-{/* otpinputField */}
-{/* <OtpInput/> */}
-
-{/* genrateRandomColor */}
-{/* <GenrateRandomColor/> */}
-
-
-{/* cardSlider  */}
-{/* <CardSlider/> */}
-{/* practice */}
-{/* <Practice/> */}
-{/* <FuturePediaWeb/> */}
-
-{/* <NestedComent/> */}
-
-{/* memozition */}
-{/* <Optimation/> */}
-
-{/* cricle program */}
-<MainCricle/>
     </>
   );
 }
