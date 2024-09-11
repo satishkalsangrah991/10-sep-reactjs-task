@@ -52,7 +52,7 @@ console.log("re rendard")
 
 
 {/* useCallback */}
-<h1 className="text-xl py-12 text-center text-red-500">Hello Satish</h1>
+<h1 className="text-xl py-12 text-center text-red-500">Hello Satish Patidar</h1>
 
 <h1 className="text-xl py-4 text-center text-red-500">{data1()}</h1>
 <div className="flex justify-center items-center cursor-pointer" onClick={increment}><button>Click Count</button></div>
